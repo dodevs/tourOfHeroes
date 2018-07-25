@@ -13,10 +13,12 @@ export class HeroesComponent implements OnInit {
   heroes = HEROES;
 
   // Objeto do tipo `Hero`
-  hero: Hero = {
-    id: 1,
-    name: 'Windstrom'
-  };
+  selectedHero: Hero;
+
+  // Retorna nada
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 
   constructor() { }
 
