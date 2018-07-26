@@ -18,4 +18,9 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes'); // Envia a mensagem e depois entrega os heroes
     return of(HEROES); // rxjs.of() retorna um Observable [ Emite notificações a cada mudança ]
   }
+
+  getHero(id: number): Observable<Hero> {
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find( hero => hero.id === id)); // Retorna um observable do resultado da busca
+  }
 }
