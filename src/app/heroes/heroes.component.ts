@@ -15,14 +15,14 @@ export class HeroesComponent implements OnInit {
   // Objeto do tipo `Hero`
   selectedHero: Hero;
 
-  // Retorna nada
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
-
   constructor() { }
 
   ngOnInit() {
+  }
+
+  // Retorna nada
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
   }
 
 }

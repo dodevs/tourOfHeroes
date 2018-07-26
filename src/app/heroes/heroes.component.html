@@ -7,12 +7,15 @@
   </li>
 </ul>
 
-<!-- Pipes servem para formatar strings e outros dados a serem mostrados-->
-<h2>{{hero.name | uppercase}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div>
-  <label> name:
-    <!-- os dados seguem em duas direções, do textbox para `hero.name` e de `hero.name` para o textbox-->
-    <input [(ngModel)]="hero.name" placeholder="name">
-  </label>
+<!-- Só mostra se `selectedHeroes` existir -->
+<div *ngIf="selectedHero">
+  <!-- Pipes servem para formatar strings e outros dados a serem mostrados-->
+  <h2>{{ selectedHero.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label> name:
+      <!-- os dados seguem em duas direções, do textbox para `hero.name` e de `hero.name` para o textbox-->
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
 </div>
