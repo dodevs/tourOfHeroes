@@ -3,6 +3,7 @@ import { Routes, RouterModule} from '@angular/router';
 
 import { HeroesComponent } from './heroes/heroes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 // Rotas
 const routes: Routes = [
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    // :id é onde irá ficar o id do heroi especifico
+    path: 'detail/:id',
+    component: HeroDetailComponent
   }
 ];
 
