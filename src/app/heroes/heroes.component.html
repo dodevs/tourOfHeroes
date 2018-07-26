@@ -3,13 +3,9 @@
   <!-- *ngFor Diretiva de repetição-->
   <!-- (click) listener for click event. onSelect is a method of Hero component-->
   <!-- [class.selected] só é adicionada se o heroi atual for o selecionado-->
-  <li *ngFor="let hero of heroes"
-      (click)="onSelect(hero)"
-      [class.selected]="hero === selectedHero">
-
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
   </li>
 </ul>
-
-<!-- bind heroComponent.selectedHero to heroDetailsComponent.hero property  -->
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
