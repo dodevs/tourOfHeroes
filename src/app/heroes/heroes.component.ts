@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, Inject } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
+import { HeroService } from './../hero.service';
 
 // Metadados do componente
 @Component({
@@ -10,19 +10,25 @@ import { HEROES } from '../mock-heroes';
 })
 export class HeroesComponent implements OnInit {
   // Array do tipo Hero
-  heroes = HEROES;
+  heroes: Hero[];
 
   // Objeto do tipo `Hero`
   selectedHero: Hero;
 
-  constructor() { }
+  // Implementa o serviço
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    this.getHeroes();
   }
 
   // Retorna nada
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
   }
 
 }
