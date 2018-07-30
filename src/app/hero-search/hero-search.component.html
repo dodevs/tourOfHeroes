@@ -1,0 +1,15 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+
+  <!-- #searchBox - identificador para o angular -->
+  <!-- (keyup) - cada vez que uma tecla é pressionada -->
+  <input #searchBox id="search-result" (keyup)="search(searchBox.value)">
+
+  <ul class="search-result">
+    <!-- $ identifica a variável como um Observable -->
+    <!-- async pipe - subscribe to an Observable-->
+    <li *ngFor="let hero of heroes$ | async">
+      <a routerLink="/detail/{{hero.id}}"> {{hero.name}} </a>
+    </li>
+  </ul>
+</div>
