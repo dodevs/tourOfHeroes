@@ -1,9 +1,11 @@
-<!-- Representa o valor da propriedade dentro do HTML-->
-<h1>{{ title }}</h1>
-<nav>
-  <!-- Diretiva do RouterLink -->
-  <a routerLink="/heroes"> Heroes </a>
-  <a routerLink="/dashboard"> Dashboard </a>
-</nav>
+<div class="header">
+  <!-- Representa o valor da propriedade dentro do HTML-->
+  <h1>{{ title }}</h1>
+  <nav>
+    <!-- Diretiva do RouterLink -->
+    <a routerLink="/heroes"> Heroes </a>
+    <a routerLink="/dashboard"> Dashboard </a>
+    <app-messages></app-messages>
+  </nav>
+</div>
 <router-outlet></router-outlet> <!--Apenas mostra o component HeroesComponent quando for navegado até ele-->
-<app-messages></app-messages>
