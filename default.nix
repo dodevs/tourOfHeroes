@@ -8,6 +8,5 @@ stdenv.mkDerivation rec {
     shellHook = 
         ''
             export PATH="$PATH:$PWD/node_modules/.bin"
-            npm install npm
         '';
 }
