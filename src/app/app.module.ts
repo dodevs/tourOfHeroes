@@ -30,7 +30,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     // e retorna respostas do servidor simuladas
     // Deve remover isso quando um servidor real estive rpronto para receber requisições
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false} //InMemoryDataService é o banco de dados em memória primario
+      InMemoryDataService, { dataEncapsulation: false} // InMemoryDataService é o banco de dados em memória primario
     )
   ],
   providers: [],
