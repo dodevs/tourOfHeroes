@@ -9,6 +9,10 @@ import { Hero } from './hero'; // Class hero
 import { HEROES } from './mock-heroes'; // Mock heroes
 import { MessageService } from './message.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+};
+
 // Injectable decorator com propriedades definidas
 // [providedIn:   root] o deixa disponivel para qualquer classe
 @Injectable({providedIn: 'root'})
@@ -40,6 +44,55 @@ export class HeroService {
         catchError(this.handleError<Hero>(`getHero id=${id}`))
       );
     /* return of(HEROES.find( hero => hero.id === id)); // Retorna um observable do resultado da busca */
+  }
+
+  /* PUT: update the hero on the server */
+  updateHero(hero: Hero): Observable<any> {
+
+    // URL, o dado a ser atualizado, opções
+    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+      tap( () => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<any>('updated hero'))
+    );
+  }
+
+  /** POST: add a new hero to the server */
+  addHero (hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+      .pipe(
+        tap( (heroi: Hero) => this.log((`added hero w/ id=${heroi.id}`)) ),
+        catchError(this.handleError<Hero>('addHero')
+      )
+    );
+  }
+
+  /** DELETE: delete the hero from the server
+   * @param hero - Pode ser um objeto do tipo Hero ou numero
+   */
+  deleteHero(hero: Hero | number): Observable<Hero> {
+    // Se for um numero, é atribuido seu valor, se nao é atribuido a propriedade do objeto
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.delete<Hero>(url, httpOptions)
+      .pipe(
+        tap( () => this.log(`deleted hero id=${id}`)),
+        catchError(this.handleError<Hero>('deleteHero'))
+      );
+  }
+
+  searchHeroes(termo: string): Observable<Hero[]> {
+    if (!termo.trim()) {
+      return of([]); // Se o termo for vazio, retorna uma Observable de array vazio
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${termo}`)
+      // Aplica varias funções puras de forma organizada
+      .pipe(
+        tap(() => this.log(`found heroes matching "${termo}"`)),
+        catchError( this.handleError<Hero[]>('searchHeroes', [])
+      )
+    );
+
   }
 
   /* Loggar uma mensagem com o serviço MessageService */
