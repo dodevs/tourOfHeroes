@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
 import { HeroService } from './../hero.service';
@@ -23,6 +23,21 @@ export class HeroesComponent implements OnInit {
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes); // Assim que a resposta for recebida o JSON ira para `heroes`
+  }
+
+  add(name: string): void {
+    name = name.trim(); // remove os espaços em branco
+    if (!name) { return; } // Se o nome for vazio, retorna
+    this.heroService.addHero({ name } as Hero) // Salva o novo heroi e adiciona no array
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      }
+    );
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero).subscribe();
   }
 
 }
