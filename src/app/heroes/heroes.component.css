@@ -71,3 +71,19 @@ button.delete {
   background-color: gray !important;
   color: white;
 }
+
+div.heroes-header {
+  display: flex;
+  flex-direction: row;
+}
+
+div.heroes-header > h2 {
+  flex: 1;
+}
+
+div.heroes-header > div {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+}

@@ -1,0 +1,21 @@
+div.header {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+h1 {
+  flex: 1;
+}
+
+nav {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+a {
+  margin: 0 10px 0 10px;
+  text-decoration: none;
+}

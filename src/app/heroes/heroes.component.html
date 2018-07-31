@@ -1,10 +1,12 @@
-<h2> Meus Herois </h2>
+<div class="heroes-header">
+    <h2> Meus Herois </h2>
 
-<div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
-  <button (click)="add(heroName.value); heroName.value=''"> add </button>
+    <div>
+      <label>Hero name:
+        <input #heroName />
+      </label>
+      <button (click)="add(heroName.value); heroName.value=''"> add </button>
+    </div>
 </div>
 
 <ul class="heroes">
